@@ -13,6 +13,7 @@ model User {
 
   auth_session Session[]
   key          Key[]
+  posts        Post[]
 }
 
 model Session {
@@ -32,4 +33,12 @@ model Key {
   user            User    @relation(references: [id], fields: [user_id], onDelete: Cascade)
 
   @@index([user_id])
+}
+
+model Post {
+  id      Int    @id @default(autoincrement())
+  message String
+
+  user_id String
+  user    User   @relation(fields: [user_id], references: [id], onDelete: Cascade)
 }

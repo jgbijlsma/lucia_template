@@ -1,7 +1,10 @@
 import LogInForm from "@/components/auth/LogInForm";
+import inverseProtectedPage from "@/lib/auth/inverseProtectedPage";
 import Link from "next/link";
 
-export default function LogInPage() {
+export default async function LogInPage() {
+  await inverseProtectedPage();
+
   return (
     <main>
       <h1 className="text-4xl">Log in</h1>
